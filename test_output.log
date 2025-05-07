@@ -1,0 +1,71 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-7.4.4, pluggy-1.4.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/elder/python-p3-data-structures-lab
+configfile: pytest.ini
+collecting ... collected 7 items
+
+Module data_structures.py contains function get_names() that retrieves names from list of foods. <- lib/testing/data_structures_test.py PASSED [ 14%]
+Module data_structures.py contains function get_spiciest_foods() that returns foods with a heat_level over 5. <- lib/testing/data_structures_test.py PASSED [ 28%]
+Module data_structures.py contains function print_spicy_foods that returns all foods formatted with 🌶  emojis. <- lib/testing/data_structures_test.py FAILED [ 42%]
+Module data_structures.py contains function get_spicy_food_by_cuisine that returns the food that matches a cuisine. <- lib/testing/data_structures_test.py PASSED [ 57%]
+Module data_structures.py contains function print_spiciest_foods that returns foods with heat_level over 5 formatted with 🌶  emojis. <- lib/testing/data_structures_test.py FAILED [ 71%]
+Module data_structures.py contains function get_average_heat_level that returns average of heat_levels in spicy_foods. <- lib/testing/data_structures_test.py PASSED [ 85%]
+Module data_structures.py contains function create_spicy_food that returns original list of spicy_foods with new spicy_food added. <- lib/testing/data_structures_test.py PASSED [100%]
+
+=================================== FAILURES ===================================
+__________________ TestDataStructures.test_print_spicy_foods ___________________
+
+self = <data_structures_test.TestDataStructures object at 0x707043971670>
+
+    def test_print_spicy_foods(self):
+        '''contains function print_spicy_foods that returns all foods formatted with 🌶  emojis.'''
+        captured_out = io.StringIO()
+        sys.stdout = captured_out
+        print_spicy_foods(TestDataStructures.SPICY_FOODS)
+        sys.stdout = sys.__stdout__
+>       assert(captured_out.getvalue() == "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" +
+            "Buffalo Wings (American) | Heat Level: 🌶🌶🌶\n" +
+            "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n")
+E       AssertionError: assert 'Green Curry | Thai | Heat Level: 9\nBuffalo Wings | American | Heat Level: 3\nMapo Tofu | Sichuan | Heat Level: 6\n' == 'Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\nBuffalo Wings (American) | Heat Level: 🌶🌶🌶\nMapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n'
+E         - Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶
+E         ?             ^    -               ^^^^^^^^^
+E         + Green Curry | Thai | Heat Level: 9
+E         ?             ^^                   ^
+E         - Buffalo Wings (American) | Heat Level: 🌶🌶🌶
+E         ?               ^        -               ^^^
+E         + Buffalo Wings | American | Heat Level: 3
+E         ?               ^^                       ^
+E         - Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶
+E         ?           ^       -               ^^^^^^
+E         + Mapo Tofu | Sichuan | Heat Level: 6
+E         ?           ^^                      ^
+
+lib/testing/data_structures_test.py:46: AssertionError
+_________________ TestDataStructures.test_print_spiciest_foods _________________
+
+self = <data_structures_test.TestDataStructures object at 0x7070439d4e00>
+
+    def test_print_spiciest_foods(self):
+        '''contains function print_spiciest_foods that returns foods with heat_level over 5 formatted with 🌶  emojis.'''
+        captured_out = io.StringIO()
+        sys.stdout = captured_out
+        print_spiciest_foods(TestDataStructures.SPICY_FOODS)
+        sys.stdout = sys.__stdout__
+>       assert(captured_out.getvalue() == "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" +
+            "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n")
+E       AssertionError: assert 'Green Curry | Thai | Heat Level: 9\nMapo Tofu | Sichuan | Heat Level: 6\n' == 'Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\nMapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n'
+E         - Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶
+E         ?             ^    -               ^^^^^^^^^
+E         + Green Curry | Thai | Heat Level: 9
+E         ?             ^^                   ^
+E         - Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶
+E         ?           ^       -               ^^^^^^
+E         + Mapo Tofu | Sichuan | Heat Level: 6
+E         ?           ^^                      ^
+
+lib/testing/data_structures_test.py:64: AssertionError
+=========================== short test summary info ============================
+FAILED Module data_structures.py contains function print_spicy_foods that returns all foods formatted with 🌶  emojis.
+FAILED Module data_structures.py contains function print_spiciest_foods that returns foods with heat_level over 5 formatted with 🌶  emojis.
+========================= 2 failed, 5 passed in 0.04s ==========================
